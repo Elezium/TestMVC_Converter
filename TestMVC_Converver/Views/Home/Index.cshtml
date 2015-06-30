@@ -1,0 +1,107 @@
+﻿@model TestMVC_Converver.Models.Paste
+
+@{
+    ViewBag.Title = "[ Pasted ]";
+}
+
+<h2>Index2</h2>
+
+
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Paste</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LanguageId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.LanguageId, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("LanguageId", null, htmlAttributes: new { @id = "Lang", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LanguageId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Private, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Private)
+                    @Html.ValidationMessageFor(model => model.Private, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Expiry, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Expiry, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Expiry, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+        
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <p>Raw Input</p>
+            @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @id = "Raw", @rows = "30", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-6">
+            <p>Parsed Output</p>
+            <pre ><code id="Parsed" class="language-csharp">
+                </code></pre>
+        </div>
+    </div>
+
+}
+
+<div>
+    <button class="btn btn-primary" onclick="parse()">Parse</button>
+</div>
+@*<script src="~/Scripts/jquery-2.1.4.js"></script>
+<script>
+
+        function parse() {
+            console.log("parsed...");
+            $("#Parsed").html($("Raw").html());
+        }
+  
+</script>*@
+
+
+
+
+
