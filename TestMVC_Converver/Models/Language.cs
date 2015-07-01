@@ -9,5 +9,6 @@ namespace TestMVC_Converver.Models
     {
         public int LanguageId { get; set; }
         public string Name { get; set; }
+        public string PrismName { get; set; }
     }
 }

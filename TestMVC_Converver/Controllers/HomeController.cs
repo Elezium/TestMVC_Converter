@@ -14,15 +14,22 @@ namespace TestMVC_Converver.Controllers
         {
             List<Language> lang = new List<Language>
             {
-                new Language { LanguageId = 1, Name = "C#" },
-                new Language { LanguageId = 2, Name = "JavaScript" },
-                new Language { LanguageId = 3, Name = "Cobol"}
+                new Language { LanguageId = 1, Name = "C#", PrismName="language-csharp" },
+                new Language { LanguageId = 2, Name = "JavaScript", PrismName="language-javascript" },
+                new Language { LanguageId = 3, Name = "Markdown", PrismName="language-markdown"}
                 
             };
 
+            Paste paste = new Paste();
+            paste.PasteId = 1;
+            paste.Expiry = DateTime.Now.AddDays(5);
+            paste.Title = "Title";
+            paste.Languages = lang;
+
+
             ViewBag.LanguageId = new SelectList(lang, "LanguageId", "Name");
 
-            return View();
+            return View(paste);
         }
     }
 }

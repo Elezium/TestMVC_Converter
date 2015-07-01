@@ -140,6 +140,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\JsonHelper.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\Paste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
